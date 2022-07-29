@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/cards_fan_outline.png-4fc7d1a2c07914e95e32286c7b1d594b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Project/Images/Gui/KennyBoardGamesIcons/cards_fan_outline.png"
+dest_files=[ "res://.import/cards_fan_outline.png-4fc7d1a2c07914e95e32286c7b1d594b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=true
+flags/srgb=0
+process/fix_alpha_border=true
+process/premult_alpha=true
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

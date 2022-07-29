@@ -1,0 +1,432 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Project/Scripts/Entities/CustomLabel.gd" type="Script" id=1]
+[ext_resource path="res://Project/Scripts/Entities/CustomRichLabel.gd" type="Script" id=2]
+[ext_resource path="res://Project/Scripts/Entities/CardClass.gd" type="Script" id=3]
+[ext_resource path="res://Project/Images/Gui/KennyBoardGamesIcons/sword.png" type="Texture" id=4]
+[ext_resource path="res://Project/Images/Gui/KennyBoardGamesIcons/shield.png" type="Texture" id=5]
+[ext_resource path="res://Project/Images/Gui/KennyBoardGamesIcons/rhombus_outline.png" type="Texture" id=6]
+[ext_resource path="res://Project/Images/Gui/KennyBoardGamesIcons/crown_a.png" type="Texture" id=7]
+[ext_resource path="res://Project/Images/Shaders/smoothRect2.png" type="Texture" id=8]
+[ext_resource path="res://Project/Images/Shaders/noise_combined.png" type="Texture" id=9]
+[ext_resource path="res://Project/Shaders/OutlineShader.gdshader" type="Shader" id=10]
+[ext_resource path="res://Project/Scripts/Entities/AreaScript.gd" type="Script" id=11]
+[ext_resource path="res://Project/Shaders/Disolve2d.tres" type="Shader" id=12]
+[ext_resource path="res://Project/Images/Shaders/noise_scale_C_1_sphere.jpg" type="Texture" id=13]
+[ext_resource path="res://Project/Theme/mainTheme.tres" type="Theme" id=14]
+[ext_resource path="res://Project/Entities/card_animation/Boar.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Project/Shaders/inner/dissolve2D.shader" type="Shader" id=16]
+
+[sub_resource type="ShaderMaterial" id=57]
+resource_local_to_scene = true
+shader = ExtResource( 12 )
+shader_param/uv_mod = Vector2( 1, 1 )
+shader_param/burn_color = Color( 1, 0.32549, 0.168627, 1 )
+shader_param/burn_size = 0.008
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = 1.0
+shader_param/dissolve_texture = ExtResource( 13 )
+
+[sub_resource type="DynamicFontData" id=82]
+font_path = "res://Project/Fonts/JetBrainsMono/JetBrainsMono-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=83]
+size = 50
+outline_color = Color( 0.211765, 0.211765, 0.517647, 1 )
+font_data = SubResource( 82 )
+
+[sub_resource type="DynamicFontData" id=84]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=85]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 84 )
+
+[sub_resource type="ShaderMaterial" id=81]
+resource_local_to_scene = true
+shader = ExtResource( 16 )
+shader_param/burn_color = Color( 1, 0.32549, 0.168627, 1 )
+shader_param/burn_size = 0.008
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = 1.0
+shader_param/dissolve_texture = ExtResource( 13 )
+
+[sub_resource type="DynamicFontData" id=86]
+font_path = "res://Project/Fonts/JetBrainsMono/JetBrainsMono-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=87]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 86 )
+
+[sub_resource type="DynamicFontData" id=88]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-BoldItalic.ttf"
+
+[sub_resource type="DynamicFont" id=89]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 88 )
+
+[sub_resource type="DynamicFontData" id=90]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Italic.ttf"
+
+[sub_resource type="DynamicFont" id=91]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 90 )
+
+[sub_resource type="DynamicFontData" id=92]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=93]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 92 )
+
+[sub_resource type="DynamicFontData" id=94]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=95]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 94 )
+
+[sub_resource type="DynamicFontData" id=96]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=97]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 96 )
+
+[sub_resource type="DynamicFontData" id=98]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=99]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 98 )
+
+[sub_resource type="RectangleShape2D" id=56]
+extents = Vector2( 200, 300 )
+
+[sub_resource type="ShaderMaterial" id=76]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/AlfaMult = 12.0
+shader_param/XYMult = Vector2( 0.5, 0.5 )
+shader_param/speed = 0.05
+shader_param/border_color = Color( 1, 0.8, 0.333333, 1 )
+shader_param/mask_texture = ExtResource( 8 )
+shader_param/noize_img = ExtResource( 9 )
+
+[node name="CardClass" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+theme = ExtResource( 14 )
+script = ExtResource( 3 )
+DragableExportFlag = true
+card_type = -1
+SmallScale = Vector2( 0.3, 0.3 )
+_Title = NodePath("2dNode/CardBody/CardFace/CardContent/TitleContainer/TitleLabel")
+_ImageRect = NodePath("2dNode/CardBody/CardFace/CardContent/ImageHolder/Image")
+_Description = NodePath("2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/Description")
+_CardFace = NodePath("2dNode/CardBody/CardFace")
+_DownCard = NodePath("2dNode/CardBody/DownCard")
+_DownCardIMG = NodePath("2dNode/CardBody/DownCard/DownCardIMG")
+_CardButton = NodePath("2dNode/CardBody/CardButton")
+_CardAttack = NodePath("2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams/CardAttack")
+_CardHealth = NodePath("2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams/CardDefence")
+_CardBody = NodePath("2dNode/CardBody")
+_CardCost = NodePath("2dNode/CardBody/CardFace/CardContent/TitleContainer/CostImg/CostLabel")
+_CardArea = NodePath("2dNode/CardBody/CenterPoint/CardArea")
+_SelectNode = NodePath("2dNode/CardBody/ShaderPoint/SelectedShader")
+_IndexNode = NodePath("2dNode")
+
+[node name="2dNode" type="Node2D" parent="."]
+
+[node name="CardBody" type="Control" parent="2dNode"]
+material = SubResource( 57 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -300.0
+margin_right = 200.0
+margin_bottom = 300.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 200, 300 )
+
+[node name="CardFace" type="Panel" parent="2dNode/CardBody"]
+material = SubResource( 57 )
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 200, 300 )
+
+[node name="CardContent" type="VBoxContainer" parent="2dNode/CardBody/CardFace"]
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="2dNode/CardBody/CardFace/CardContent"]
+use_parent_material = true
+margin_right = 380.0
+margin_bottom = 60.0
+
+[node name="CostImg" type="TextureRect" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer"]
+self_modulate = Color( 0.52549, 0.52549, 0.811765, 1 )
+use_parent_material = true
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="CostLabel" type="Label" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer/CostImg"]
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 83 )
+text = "10"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+font_size = 50
+font_outline_color = Color( 0.211765, 0.211765, 0.517647, 1 )
+type = 22
+
+[node name="TitleLabel" type="Label" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer"]
+use_parent_material = true
+margin_left = 124.0
+margin_top = 9.0
+margin_right = 255.0
+margin_bottom = 51.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 85 )
+text = "CardTitle"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+font_size = 30
+type = 3
+
+[node name="Control" type="Control" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer"]
+use_parent_material = true
+margin_left = 320.0
+margin_right = 380.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+
+[node name="ImageHolder" type="Control" parent="2dNode/CardBody/CardFace/CardContent"]
+use_parent_material = true
+margin_top = 64.0
+margin_right = 380.0
+margin_bottom = 264.0
+rect_min_size = Vector2( 0, 200 )
+mouse_filter = 2
+
+[node name="Image" type="TextureRect" parent="2dNode/CardBody/CardFace/CardContent/ImageHolder"]
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+
+[node name="CenterImage" type="Control" parent="2dNode/CardBody/CardFace/CardContent/ImageHolder"]
+use_parent_material = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Node2D" parent="2dNode/CardBody/CardFace/CardContent/ImageHolder/CenterImage" instance=ExtResource( 15 )]
+visible = false
+material = SubResource( 81 )
+scale = Vector2( 10, 10 )
+
+[node name="DescriptionHolder" type="PanelContainer" parent="2dNode/CardBody/CardFace/CardContent"]
+use_parent_material = true
+margin_top = 268.0
+margin_right = 380.0
+margin_bottom = 580.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DescriptionHolderControl" type="Control" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder"]
+use_parent_material = true
+margin_right = 380.0
+margin_bottom = 312.0
+
+[node name="DescriptionContent" type="VBoxContainer" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl"]
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+mouse_filter = 2
+
+[node name="Description" type="RichTextLabel" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent"]
+use_parent_material = true
+margin_right = 360.0
+margin_bottom = 229.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = SubResource( 87 )
+custom_fonts/bold_italics_font = SubResource( 89 )
+custom_fonts/italics_font = SubResource( 91 )
+custom_fonts/bold_font = SubResource( 93 )
+custom_fonts/normal_font = SubResource( 95 )
+bbcode_enabled = true
+text = "Card Description"
+script = ExtResource( 2 )
+font_size = 22
+TypeNormalFont = "NunitoSans-Bold"
+TypeBoldFont = "NunitoSans-Bold"
+TypeBoldItalicFont = "NunitoSans-BoldItalic"
+TypeItalicFont = "NunitoSans-Italic"
+TypeMonoFont = "JetBrainsMono-Regular"
+
+[node name="CardParams" type="HBoxContainer" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent"]
+use_parent_material = true
+margin_top = 233.0
+margin_right = 360.0
+margin_bottom = 302.0
+mouse_filter = 2
+
+[node name="CardAttack" type="Label" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams"]
+use_parent_material = true
+margin_right = 30.0
+margin_bottom = 69.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 97 )
+text = "5"
+valign = 1
+script = ExtResource( 1 )
+font_size = 50
+type = 3
+
+[node name="icon" type="TextureRect" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams/CardAttack"]
+use_parent_material = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_right = 25.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+
+[node name="CardDefence" type="Label" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams"]
+use_parent_material = true
+margin_left = 330.0
+margin_right = 360.0
+margin_bottom = 69.0
+size_flags_horizontal = 10
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 99 )
+text = "5"
+align = 2
+valign = 1
+script = ExtResource( 1 )
+font_size = 50
+type = 3
+
+[node name="icon" type="TextureRect" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams/CardDefence"]
+use_parent_material = true
+margin_left = -25.0
+margin_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="DownCard" type="Panel" parent="2dNode/CardBody"]
+visible = false
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 200, 300 )
+
+[node name="DownCardIMG" type="TextureRect" parent="2dNode/CardBody/DownCard"]
+modulate = Color( 1, 1, 1, 0.133333 )
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 10.0
+margin_right = -7.0
+margin_bottom = -10.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+stretch_mode = 2
+
+[node name="CardButton" type="TextureButton" parent="2dNode/CardBody"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="CenterPoint" type="Control" parent="2dNode/CardBody"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+
+[node name="CardArea" type="Area2D" parent="2dNode/CardBody/CenterPoint"]
+visible = false
+monitoring = false
+script = ExtResource( 11 )
+_Owner = NodePath("../../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2dNode/CardBody/CenterPoint/CardArea"]
+shape = SubResource( 56 )
+
+[node name="ShaderPoint" type="Control" parent="2dNode/CardBody"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+
+[node name="SelectedShader" type="ColorRect" parent="2dNode/CardBody/ShaderPoint"]
+material = SubResource( 76 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -326.0
+margin_top = -468.0
+margin_right = 314.0
+margin_bottom = 464.0
+rect_pivot_offset = Vector2( 150, 200 )
+mouse_filter = 2
+
+[connection signal="button_down" from="." to="." method="_start_dragable"]
+[connection signal="button_up" from="." to="." method="_end_dragable"]
+[connection signal="card_focused_off" from="." to="." method="focused_off"]
+[connection signal="card_focused_on" from="." to="." method="focused_on"]
+[connection signal="gui_input" from="2dNode/CardBody" to="." method="_on_CardBody_gui_input"]
+[connection signal="mouse_entered" from="2dNode/CardBody" to="." method="_on_CardBody_mouse_entered"]
+[connection signal="mouse_exited" from="2dNode/CardBody" to="." method="_on_CardBody_mouse_exited"]
+[connection signal="button_down" from="2dNode/CardBody/CardButton" to="." method="_on_CardButton_button_down"]
+[connection signal="button_up" from="2dNode/CardBody/CardButton" to="." method="_on_CardButton_button_up"]
+[connection signal="pressed" from="2dNode/CardBody/CardButton" to="." method="_on_CardButton_pressed"]
+[connection signal="area_entered" from="2dNode/CardBody/CenterPoint/CardArea" to="." method="_on_CardArea_area_entered"]
+[connection signal="area_exited" from="2dNode/CardBody/CenterPoint/CardArea" to="." method="_on_CardArea_area_exited"]

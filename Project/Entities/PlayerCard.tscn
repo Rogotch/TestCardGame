@@ -1,0 +1,210 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Project/Entities/Classes/CardClass.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Project/Scripts/Entities/PlayerCard.gd" type="Script" id=2]
+[ext_resource path="res://Project/Images/Shaders/smoothRect2.png" type="Texture" id=3]
+[ext_resource path="res://Project/Images/Shaders/noise_combined.png" type="Texture" id=4]
+[ext_resource path="res://Project/Shaders/Disolve2d.tres" type="Shader" id=5]
+[ext_resource path="res://Project/Images/Shaders/noise_scale_C_1_sphere.jpg" type="Texture" id=6]
+[ext_resource path="res://Project/Shaders/inner/dissolve2D.shader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=59]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/uv_mod = Vector2( 1, 1 )
+shader_param/burn_color = Color( 0.168627, 0.811765, 1, 1 )
+shader_param/burn_size = 0.032
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = 1.0
+shader_param/dissolve_texture = ExtResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=58]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/uv_mod = Vector2( 1, 1 )
+shader_param/burn_color = Color( 1, 0.32549, 0.168627, 1 )
+shader_param/burn_size = 0.008
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = 1.0
+shader_param/dissolve_texture = ExtResource( 6 )
+
+[sub_resource type="DynamicFontData" id=38]
+font_path = "res://Project/Fonts/JetBrainsMono/JetBrainsMono-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=39]
+size = 50
+outline_color = Color( 0.211765, 0.211765, 0.517647, 1 )
+font_data = SubResource( 38 )
+
+[sub_resource type="DynamicFontData" id=40]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=41]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 40 )
+
+[sub_resource type="ShaderMaterial" id=60]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/burn_color = Color( 1, 0.32549, 0.168627, 1 )
+shader_param/burn_size = 0.008
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = 1.0
+shader_param/dissolve_texture = ExtResource( 6 )
+
+[sub_resource type="DynamicFontData" id=42]
+font_path = "res://Project/Fonts/JetBrainsMono/JetBrainsMono-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=43]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 42 )
+
+[sub_resource type="DynamicFontData" id=44]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-BoldItalic.ttf"
+
+[sub_resource type="DynamicFont" id=45]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 44 )
+
+[sub_resource type="DynamicFontData" id=46]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Italic.ttf"
+
+[sub_resource type="DynamicFont" id=47]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 46 )
+
+[sub_resource type="DynamicFontData" id=48]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=49]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 48 )
+
+[sub_resource type="DynamicFontData" id=50]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=51]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 50 )
+
+[sub_resource type="DynamicFontData" id=52]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=53]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 52 )
+
+[sub_resource type="DynamicFontData" id=54]
+font_path = "res://Project/Fonts/Nunito_Sans/NunitoSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=55]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 54 )
+
+[sub_resource type="Shader" id=56]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+//const float PI = 3.1415926;
+uniform sampler2D mask_texture;
+uniform sampler2D noize_img;
+uniform float AlfaMult = 1.0;
+uniform vec2  XYMult   = vec2(1.0,1.0);
+uniform float speed = 1.0;
+uniform vec4 border_color: hint_color = vec4(1.0,1.0,1.0, 1.0);
+
+//void vertex() {
+//    loc_vertex = VERTEX;
+//}
+
+//vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
+//    float sine = sin(rotation);
+//    float cosine = cos(rotation);
+//
+//    uv -= pivot;
+//    uv.x = uv.x * cosine - uv.y * sine;
+//    uv.x *= Modifier.x;
+//    uv.y = uv.x * sine + uv.y * cosine;
+//    uv.y *= Modifier.y;
+//    uv += pivot;
+//
+//    return uv;
+//}
+
+void fragment() {
+//	vec2 offset = vec2(0.5, 0.5);
+//	float rotation = TIME * 0.5;
+//	rotateUV(UV, Offset, Rotation * PI/(4.0))
+	vec2 uv1 = vec2(UV.x * XYMult.x + TIME * speed, UV.y * XYMult.y + TIME * speed);
+//	vec2 uv1 = rotateUV(UV, offset, rotation * PI/(4.0));
+
+	float noize_r = texture(noize_img, uv1).r;
+	float noize_g = texture(noize_img, uv1).g;
+	float noize_b = texture(noize_img, uv1).b;
+	
+	float testNum = 0.5;
+	
+	float newAlfa = noize_r * noize_g * noize_b;
+	
+//    colour.a *= texture(mask_texture, UV).a;
+	
+//    COLOR = colour;
+	COLOR = border_color;
+	COLOR.a = texture(mask_texture, UV).a * newAlfa * AlfaMult * border_color.a;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=57]
+resource_local_to_scene = true
+shader = SubResource( 56 )
+shader_param/AlfaMult = 12.0
+shader_param/XYMult = Vector2( 0.5, 0.5 )
+shader_param/speed = 0.05
+shader_param/border_color = Color( 1, 0.8, 0.333333, 1 )
+shader_param/mask_texture = ExtResource( 3 )
+shader_param/noize_img = ExtResource( 4 )
+
+[node name="PlayerCard" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_face = false
+card_type = 0
+SmallScale = Vector2( 0.3, 0.3 )
+
+[node name="CardBody" parent="2dNode" index="0"]
+material = SubResource( 59 )
+
+[node name="CardFace" parent="2dNode/CardBody" index="0"]
+material = SubResource( 58 )
+
+[node name="CostLabel" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer/CostImg" index="0"]
+custom_fonts/font = SubResource( 39 )
+
+[node name="TitleLabel" parent="2dNode/CardBody/CardFace/CardContent/TitleContainer" index="1"]
+custom_fonts/font = SubResource( 41 )
+
+[node name="Node2D" parent="2dNode/CardBody/CardFace/CardContent/ImageHolder/CenterImage" index="0"]
+material = SubResource( 60 )
+
+[node name="Description" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent" index="0"]
+custom_fonts/mono_font = SubResource( 43 )
+custom_fonts/bold_italics_font = SubResource( 45 )
+custom_fonts/italics_font = SubResource( 47 )
+custom_fonts/bold_font = SubResource( 49 )
+custom_fonts/normal_font = SubResource( 51 )
+
+[node name="CardAttack" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams" index="0"]
+custom_fonts/font = SubResource( 53 )
+
+[node name="CardDefence" parent="2dNode/CardBody/CardFace/CardContent/DescriptionHolder/DescriptionHolderControl/DescriptionContent/CardParams" index="1"]
+custom_fonts/font = SubResource( 55 )
+
+[node name="SelectedShader" parent="2dNode/CardBody/ShaderPoint" index="0"]
+material = SubResource( 57 )

@@ -1,0 +1,49 @@
+{
+	"id" : "testClass2",
+	"name" : "Хранитель Морей", 
+	"description" : "Хранители морей - мудрые заклинатели, \n[b]веками[/b] берегущие моря", 
+	"directory_name" : "", 
+	"saving_throws" : ["int", "wis"], 
+	"hit_dice" : 8,
+	"feats" : 
+		[
+			{
+				"id" : "feat_01",
+				"level" : 1,
+				"title" : "ХИТЫ",
+				"text" : "[b]Хиты:[/b] {hitDice} за уровень в классе\n[b]Хиты на первом уровне:[/b] {diceSize} + модификатор телосложения\n[b]Хиты на следующих уровнях:[/b] {hitDice} (или {halfHD}) + модификатор телосложения за каждый уровень выше первого",
+				"action" : "none",
+				"useCount" : 0,
+				"maxUses" : 0
+			},
+			{
+				"id" : "feat_01",
+				"level" : 1,
+				"title" : "FEAT_01_TITLE",
+				"text" : "FEAT_TEXT",
+				"proficiencies" : 
+				[
+					{
+						"type" : "tool", 
+						"tags" : ["tool_smith", "tool_woodcupper"],
+					},
+					{
+						"type" : "weapon", 
+						"tags" : ["weapon_simple", "weapon_martial"],
+					},
+				],
+				"action" : "Action",
+				"useCount" : 0,
+				"maxUses" : 3
+			},
+			{
+				"id" : "feat_01",
+				"level" : 1,
+				"title" : "FEAT_01_TITLE",
+				"text" : "FEAT_TEXT",
+				"action" : "none",
+				"useCount" : 0,
+				"maxUses" : 3
+			}
+		]
+}

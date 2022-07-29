@@ -1,0 +1,265 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Project/Entities/Classes/CardClass.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Project/Scripts/Scenes/BattleScene.gd" type="Script" id=2]
+[ext_resource path="res://Project/Entities/PlayerHolder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Project/Entities/NumsNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Project/Entities/FieldCardHolder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Project/Entities/EnemyHolder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Project/Images/Gui/scifi empty playboard.png" type="Texture" id=7]
+[ext_resource path="res://Project/Images/Gui/Chaordic - Wallpaper 05.jpg" type="Texture" id=8]
+[ext_resource path="res://Project/Theme/mainTheme.tres" type="Theme" id=9]
+[ext_resource path="res://Project/Scripts/Entities/CustomLabel.gd" type="Script" id=10]
+[ext_resource path="res://Project/Images/Gui/KennyBoardGamesIcons/arrow_right_curve.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.45098, 0.6, 0.717647, 1 )
+border_width_left = 5
+border_width_top = 5
+border_color = Color( 0.52549, 0.52549, 0.811765, 1 )
+corner_radius_top_left = 80
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.337784, 0.45727, 0.550781, 1 )
+border_width_left = 5
+border_width_top = 5
+border_color = Color( 0.52549, 0.52549, 0.811765, 1 )
+corner_radius_top_left = 80
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.337255, 0.458824, 0.54902, 1 )
+border_width_left = 5
+border_width_top = 5
+border_color = Color( 0.52549, 0.52549, 0.811765, 1 )
+corner_radius_top_left = 80
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Project/Fonts/skandal/Skandal.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 5 )
+
+[node name="BattleScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+_player_card_holder = NodePath("PlayerHolder")
+_player_front = NodePath("BattlefieldNode/Battlefield/PlayerFront")
+_enemy_front = NodePath("BattlefieldNode/Battlefield/EnemyFront")
+_numbers = NodePath("BattlefieldNode/Battlefield/ResultNums")
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 7
+
+[node name="BattlefieldNode" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -590.0
+margin_top = -338.5
+margin_right = 590.0
+margin_bottom = 338.5
+
+[node name="Field" type="TextureRect" parent="BattlefieldNode"]
+self_modulate = Color( 0.603922, 0.878431, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Battlefield" type="VBoxContainer" parent="BattlefieldNode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -457.5
+margin_top = -242.5
+margin_right = 457.5
+margin_bottom = 242.5
+
+[node name="EnemyFront" type="HBoxContainer" parent="BattlefieldNode/Battlefield"]
+margin_top = 79.0
+margin_right = 915.0
+margin_bottom = 79.0
+size_flags_vertical = 6
+
+[node name="HolderNode" parent="BattlefieldNode/Battlefield/EnemyFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 112.0
+margin_right = 112.0
+Type = 1
+
+[node name="HolderNode2" parent="BattlefieldNode/Battlefield/EnemyFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 342.0
+margin_right = 342.0
+Type = 1
+
+[node name="HolderNode3" parent="BattlefieldNode/Battlefield/EnemyFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 572.0
+margin_right = 572.0
+Type = 1
+
+[node name="HolderNode4" parent="BattlefieldNode/Battlefield/EnemyFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 802.0
+margin_right = 802.0
+Type = 1
+
+[node name="ResultNums" type="HBoxContainer" parent="BattlefieldNode/Battlefield"]
+margin_top = 242.0
+margin_right = 915.0
+margin_bottom = 242.0
+size_flags_vertical = 6
+
+[node name="NumsNode_1" parent="BattlefieldNode/Battlefield/ResultNums" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 112.0
+margin_right = 112.0
+
+[node name="NumsNode_2" parent="BattlefieldNode/Battlefield/ResultNums" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 342.0
+margin_right = 342.0
+
+[node name="NumsNode_3" parent="BattlefieldNode/Battlefield/ResultNums" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 572.0
+margin_right = 572.0
+
+[node name="NumsNode_4" parent="BattlefieldNode/Battlefield/ResultNums" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 802.0
+margin_right = 802.0
+
+[node name="PlayerFront" type="HBoxContainer" parent="BattlefieldNode/Battlefield"]
+margin_top = 405.0
+margin_right = 915.0
+margin_bottom = 405.0
+size_flags_vertical = 6
+
+[node name="HolderNode" parent="BattlefieldNode/Battlefield/PlayerFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 112.0
+margin_right = 112.0
+
+[node name="HolderNode2" parent="BattlefieldNode/Battlefield/PlayerFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 342.0
+margin_right = 342.0
+
+[node name="HolderNode3" parent="BattlefieldNode/Battlefield/PlayerFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 572.0
+margin_right = 572.0
+
+[node name="HolderNode4" parent="BattlefieldNode/Battlefield/PlayerFront" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 802.0
+margin_right = 802.0
+
+[node name="EnemyDeck" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_right = 0.0
+rect_scale = Vector2( 1, -1 )
+_face = false
+DragableExportFlag = false
+
+[node name="PlayerDeck" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+_face = false
+DragableExportFlag = false
+
+[node name="EnemyHolder" parent="." instance=ExtResource( 6 )]
+_DeckNode = NodePath("../EnemyDeck")
+
+[node name="PlayerHolder" parent="." instance=ExtResource( 3 )]
+_DeckNode = NodePath("../PlayerDeck")
+
+[node name="NextTurnButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_top = -138.0
+theme = ExtResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+
+[node name="CustomLabel" type="Label" parent="NextTurnButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Next
+Turn"
+align = 2
+valign = 2
+script = ExtResource( 10 )
+font_size = 40
+font_outline_size = 2
+type = 21
+
+[node name="TextureRect" type="TextureRect" parent="NextTurnButton"]
+anchor_right = 1.0
+margin_left = 23.0
+margin_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[connection signal="pressed" from="NextTurnButton" to="." method="_on_NextTurnButton_pressed"]

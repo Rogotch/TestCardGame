@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/fungant_.png-64aed6bb6b4a707873c7c2b5080a5e9d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Project/Images/_analogStudios/forestSprites_ v1.2/fungant_.png"
+dest_files=[ "res://.import/fungant_.png-64aed6bb6b4a707873c7c2b5080a5e9d.stex" ]
+
+[params]
+
+compress/mode=3
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
